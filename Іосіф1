@@ -1,0 +1,31 @@
+#include <stdio.h>
+void Engine(){
+    int person = 0, n, k,res;
+    do{
+        printf("Amount of worriers:");
+        res=scanf("%d",&n); //кількість воїнів
+        fflush(stdin);
+        if(res!=1 || n<=0) printf("Invalid input. Try again.\n");
+    }while(res!=1 || n<=0);
+    do{
+        printf("What kind of worrier will be killed:");
+        res=scanf("%d",&k); //воїн, який момиратиме
+        fflush(stdin);
+        if(res!=1 || k<=0) printf("Invalid input. Try again.\n");
+    }while(res!=1 || k<=0);
+    for (int i = 2; i <= n; i++){
+        person = (person + k) % i; //рекурсивний метод підрахунку воїна ,що виживе, ідея заключається у тому , що при кожній ітерації виконується задача для n+1 ,починаючи з 2.
+    }
+    printf("For n = %d:%d", n,person+1); //Виживший.
+}
+int main () {
+int res,t;
+do{
+    Engine();
+    printf("\nIf you what to continue to use program enter 1 or more if not 0 or less:");
+    res=scanf("%d",&t);
+    fflush(stdin);
+    if(res!=1) printf("Invalid input. Try again.\n");
+}while(res!=1 || t>=1);
+return 0;
+}
